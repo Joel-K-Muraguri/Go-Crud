@@ -6,11 +6,15 @@ import (
 	"net/http"
 
 	"github.com/gorilla/mux"
+	"github.com/jinzhu/gorm"
+	"gorm.io/gorm"
 )
 
 
 type Server struct{
 	Router *mux.Router
+	DB *gorm.DB
+	
 }
 
 
