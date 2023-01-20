@@ -8,6 +8,6 @@ import (
 
 
 func (s *Server) Home(w http.ResponseWriter , r *http.Request){
-	responses.JSON(w, http.StatusOK, "Welcome to my CRUD API")
+	responses.JSON(w, http.StatusOK, "Welcome to my GAMES CRUD API")
 	
 }
