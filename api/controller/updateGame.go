@@ -8,7 +8,6 @@ import (
 
 	"github.com/Joel-K-Muraguri/Go-Crud/api/models"
 	"github.com/Joel-K-Muraguri/Go-Crud/api/responses"
-	"github.com/Joel-K-Muraguri/Go-Crud/api/utils"
 	"github.com/gorilla/mux"
 )
 
@@ -38,7 +37,7 @@ func (s *Server) UpdateGame(w http.ResponseWriter , r *http.Request){
 	}
 	updatedUser, err := game.UpdateAGame(s.DB, uint32(uid))
 	if err != nil {
-		formattedError := utils.FormatError(err.Error())
+		formattedError := responses.FormatError(err.Error())
 		responses.ERROR(w, http.StatusInternalServerError, formattedError)
 		return
 	}

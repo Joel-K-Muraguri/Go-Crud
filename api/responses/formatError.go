@@ -1,4 +1,4 @@
-package utils
+package responses
 
 import (
 	"errors"
@@ -8,7 +8,7 @@ import (
 func FormatError(err string) error {
 
 	if strings.Contains(err, "title") {
-		return errors.New("Title Already Taken")
+		return errors.New("TITLE ALREADY TAKEN")
 	}
-	return errors.New("Incorrect Details")
+	return errors.New("INCORRECT DETAILS")
 }

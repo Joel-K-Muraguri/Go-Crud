@@ -11,7 +11,7 @@ import (
 )
 
 type Game struct {
-	ID          uint      `gorm:"primaryKey;auto_increment" json:"id"`
+	ID          uint32      `gorm:"primaryKey;auto_increment" json:"id"`
 	Title        string    `gorm:"size:255;not null;unique" json:"title"`
 	Description string    `gorm:"size:255;not null;" json:"description"`
 	Price       string    `gorm:"size:255;not null;" json:"price"`
@@ -22,7 +22,7 @@ type Game struct {
 
 func (g *Game) Prepare() {
 	g.ID = 0
-	g.Title = html.EscapeString(strings.TrimSpace(g.Name))
+	g.Title = html.EscapeString(strings.TrimSpace(g.Title))
 	g.Description = html.EscapeString(strings.TrimSpace(g.Description))
 	g.Price = html.EscapeString(strings.TrimSpace(g.Price))
 	g.OS = html.EscapeString(strings.TrimSpace(g.OS))
@@ -80,7 +80,7 @@ func (g *Game) FindGameByID(db *gorm.DB, uid uint32) (*Game, error) {
 		return &Game{}, err
 	}
 	if gorm.IsRecordNotFoundError(err) {
-		return &Game{}, errors.New("User Not Found")
+		return &Game{}, errors.New("user Not Found")
 	}
 	return g, err
 }
@@ -103,8 +103,8 @@ func (g *Game) UpdateAGame(db *gorm.DB, uid uint32) (*Game, error) {
 	if db.Error != nil {
 		return &Game{}, db.Error
 	}
-	// This is the display the updated user
-	err = db.Debug().Model(&Game{}).Where("id = ?", uid).Take(&u).Error
+	// This is the display the updated game
+	err = db.Debug().Model(&Game{}).Where("id = ?", uid).Take(&g).Error
 	if err != nil {
 		return &Game{}, err
 	}

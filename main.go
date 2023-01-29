@@ -1,7 +1,7 @@
 package main
 
 import (
-	api "github.com/Joel-K-Muraguri/Go-Crud/api/utils"
+	"github.com/Joel-K-Muraguri/Go-Crud/api"
 )
 
 func main() {

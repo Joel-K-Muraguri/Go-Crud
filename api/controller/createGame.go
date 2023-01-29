@@ -8,7 +8,6 @@ import (
 
 	"github.com/Joel-K-Muraguri/Go-Crud/api/models"
 	"github.com/Joel-K-Muraguri/Go-Crud/api/responses"
-	"github.com/Joel-K-Muraguri/Go-Crud/api/utils"
 )
 
 func (s *Server) CreateGame(w http.ResponseWriter , r *http.Request){
@@ -31,7 +30,7 @@ func (s *Server) CreateGame(w http.ResponseWriter , r *http.Request){
 
 	if err != nil {
 
-		formattedError := utils.FormatError(err.Error())
+		formattedError := responses.FormatError(err.Error())
 
 		responses.ERROR(w, http.StatusInternalServerError, formattedError)
 		return
